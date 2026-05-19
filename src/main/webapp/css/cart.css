@@ -1,0 +1,170 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
+}
+
+.cart-container{
+    max-width: 1200px;
+
+    margin: 40px auto;
+
+    background-color: white;
+
+    padding: 30px;
+
+    border-radius: 14px;
+
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.cart-container h1{
+    margin-bottom: 30px;
+}
+
+.cart-items{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cart-item{
+    display: flex;
+    gap: 20px;
+
+    border-bottom: 1px solid #eee;
+
+    padding-bottom: 20px;
+}
+
+.cart-item img{
+    width: 140px;
+    height: 160px;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+}
+
+.item-details{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.item-details p{
+    color: #666;
+}
+
+.cart-summary{
+    margin-top: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.checkout-btn{
+    padding: 15px 30px;
+
+    border: none;
+
+    background-color: #111;
+    color: white;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.checkout-btn:hover{
+    background-color: #333;
+}
+
+.empty-cart{
+    text-align: center;
+    padding: 50px 0;
+}
+
+.empty-cart a{
+    display: inline-block;
+
+    margin-top: 20px;
+
+    text-decoration: none;
+
+    background-color: #111;
+    color: white;
+
+    padding: 14px 25px;
+
+    border-radius: 8px;
+}
+
+.remove-btn{
+    width: fit-content;
+
+    padding: 10px 18px;
+
+    border: none;
+
+    background-color: #ff4d4d;
+    color: white;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-weight: 500;
+
+    margin-top: 10px;
+}
+
+.remove-btn:hover{
+    background-color: #e63c3c;
+}
+
+.quantity-controls{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-top: 10px;
+}
+
+.qty-btn{
+    width: 35px;
+    height: 35px;
+
+    border: none;
+
+    background-color: #111;
+    color: white;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.qty-btn:hover{
+    background-color: #333;
+}
+
+.quantity-value{
+    font-size: 18px;
+    font-weight: 600;
+
+    min-width: 20px;
+    text-align: center;
+}
