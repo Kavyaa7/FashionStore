@@ -49,6 +49,10 @@ Product Details
 Add To Cart
    ↓
 Cart Page
+   ↓
+Checkout
+   ↓
+Place Order
 ```
 
 
