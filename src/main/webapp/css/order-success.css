@@ -1,50 +1,158 @@
+:root{
+    --primary:#D946EF;
+    --primary-hover:#C026D3;
+    --secondary:#8B5CF6;
+    --background:#FCFCFD;
+    --border:#F3E8FF;
+    --text:#1F2937;
+    --muted:#6B7280;
+}
+
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 body{
-    font-family: 'Poppins', sans-serif;
+    font-family:"Manrope",sans-serif;
 
-    background-color: #f5f5f5;
+    min-height:100vh;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-    min-height: 100vh;
+    background:
+        radial-gradient(circle at top right,#F5D0FE 0%,transparent 28%),
+        radial-gradient(circle at bottom left,#EDE9FE 0%,transparent 28%),
+        var(--background);
+
+    padding:20px;
 }
 
 .success-card{
-    background-color: white;
 
-    padding: 50px;
+    max-width:500px;
+    width:100%;
 
-    border-radius: 14px;
+    background:rgba(255,255,255,.96);
 
-    text-align: center;
+    backdrop-filter:blur(12px);
 
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border:1px solid var(--border);
+
+    border-radius:28px;
+
+    padding:55px 40px;
+
+    text-align:center;
+
+    box-shadow:
+            0 20px 45px rgba(139,92,246,.08),
+            0 10px 25px rgba(217,70,239,.08);
+}
+
+.success-card::before{
+
+    content:"✓";
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    width:90px;
+    height:90px;
+
+    margin:0 auto 24px;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+    );
+
+    color:#fff;
+
+    font-size:42px;
+
+    font-weight:800;
 }
 
 .success-card h1{
-    margin-bottom: 20px;
+
+    font-size:36px;
+
+    font-weight:800;
+
+    color:var(--text);
+
+    margin-bottom:14px;
 }
 
 .success-card p{
-    margin-bottom: 25px;
+
+    color:var(--muted);
+
+    line-height:1.8;
+
+    margin-bottom:30px;
+
+    font-size:16px;
 }
 
 .success-card a{
-    text-decoration: none;
 
-    background-color: #111;
-    color: white;
+    display:inline-block;
 
-    padding: 14px 28px;
+    text-decoration:none;
 
-    border-radius: 8px;
+    padding:15px 32px;
 
-    display: inline-block;
+    border-radius:16px;
+
+    background:linear-gradient(
+            90deg,
+            var(--primary),
+            var(--secondary)
+    );
+
+    color:#fff;
+
+    font-weight:700;
+
+    transition:.25s;
+}
+
+.success-card a:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 25px rgba(217,70,239,.25);
+}
+
+@media(max-width:600px){
+
+    .success-card{
+
+        padding:40px 24px;
+
+        border-radius:20px;
+    }
+
+    .success-card h1{
+
+        font-size:30px;
+    }
+
+    .success-card::before{
+
+        width:75px;
+        height:75px;
+
+        font-size:34px;
+    }
 }

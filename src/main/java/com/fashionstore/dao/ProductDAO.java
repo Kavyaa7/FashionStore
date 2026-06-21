@@ -53,4 +53,6 @@ public interface ProductDAO {
             String keyword,
             String sortBy
     );
+    
+    boolean reduceStock(int productId, int quantity);
 }

@@ -19,4 +19,6 @@ public interface ProductService {
             String keyword,
             String sortBy
     );
+    
+    boolean reduceStock(int productId, int quantity);
 }

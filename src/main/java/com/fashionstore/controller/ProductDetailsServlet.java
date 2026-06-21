@@ -6,6 +6,7 @@ import com.fashionstore.service.ProductService;
 import com.fashionstore.service.ProductSizeService;
 import com.fashionstore.service.impl.ProductServiceImpl;
 import com.fashionstore.service.impl.ProductSizeServiceImpl;
+import com.fashionstore.service.impl.WishlistServiceImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -21,12 +22,14 @@ public class ProductDetailsServlet extends HttpServlet {
 
     private ProductService productService;
     private ProductSizeService productSizeService;
+    private WishlistServiceImpl wishlistService;
 
     @Override
     public void init() {
 
         productService = new ProductServiceImpl();
         productSizeService = new ProductSizeServiceImpl();
+        wishlistService = new WishlistServiceImpl();
 
     }
 
@@ -60,6 +63,19 @@ public class ProductDetailsServlet extends HttpServlet {
 
             request.setAttribute("product", product);
             request.setAttribute("sizes", sizes);
+            
+            int userId = 1;
+
+            boolean inWishlist =
+                    wishlistService.exists(
+                            userId,
+                            productId
+                    );
+
+            request.setAttribute(
+                    "inWishlist",
+                    inWishlist
+            );
 
             request.getRequestDispatcher(
                     "/views/product/product-details.jsp")

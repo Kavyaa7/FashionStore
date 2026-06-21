@@ -23,6 +23,8 @@ public class PlaceOrderServlet extends HttpServlet {
 
     private OrderService orderService;
     private OrderItemService orderItemService;
+    
+    private ProductService productService;
 
     @Override
     public void init() {
@@ -37,6 +39,8 @@ public class PlaceOrderServlet extends HttpServlet {
 
         orderItemService =
                 new OrderItemServiceImpl();
+        
+        productService = new ProductServiceImpl();
     }
 
     @Override
@@ -165,6 +169,14 @@ public class PlaceOrderServlet extends HttpServlet {
                 );
 
                 orderItemService.save(orderItem);
+            }
+            
+            for (CartItem item : cartItems) {
+
+                productService.reduceStock(
+                        item.getProductId(),
+                        item.getQuantity()
+                );
             }
 
             /*

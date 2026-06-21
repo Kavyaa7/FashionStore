@@ -52,4 +52,13 @@ public class ProductServiceImpl implements ProductService {
                 sortBy
         );
     }
+
+    @Override
+    public boolean reduceStock(int productId, int quantity) {
+
+        return productDAO.reduceStock(
+                productId,
+                quantity
+        );
+    }
 }

@@ -16,11 +16,9 @@
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/css/product-details.css">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet">
 
-    <!-- Font Awesome -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -39,15 +37,29 @@
 
     <div class="nav-links">
 
-        <a href="#">
-            <i class="fa-regular fa-user"></i>
-            Account
-        </a>
+        <a href="${pageContext.request.contextPath}/wishlist">
 
-        <a href="#">
-            <i class="fa-solid fa-cart-shopping"></i>
-            Cart
-        </a>
+    <i class="fa-regular fa-heart"></i>
+
+    Wishlist
+
+</a>
+
+<a href="${pageContext.request.contextPath}/cart">
+
+    <i class="fa-solid fa-cart-shopping"></i>
+
+    Cart
+
+</a>
+
+<a href="#">
+
+    <i class="fa-regular fa-user"></i>
+
+    Account
+
+</a>
 
     </div>
 
@@ -90,6 +102,44 @@
             </c:if>
 
         </div>
+        
+        <div class="stock-section">
+
+    <c:choose>
+
+        <c:when test="${product.stockQuantity > 5}">
+
+            <p class="in-stock">
+
+                In Stock (${product.stockQuantity} available)
+
+            </p>
+
+        </c:when>
+
+        <c:when test="${product.stockQuantity > 0}">
+
+            <p class="low-stock">
+
+                Only ${product.stockQuantity} left!
+
+            </p>
+
+        </c:when>
+
+        <c:otherwise>
+
+            <p class="out-stock">
+
+                Out of Stock
+
+            </p>
+
+        </c:otherwise>
+
+    </c:choose>
+
+</div>
 
         <div class="description-section">
 
@@ -100,6 +150,8 @@
             </p>
 
         </div>
+        
+        
 
         
 
@@ -153,28 +205,75 @@
 
     </div>
 
+	<form method="post" action="${pageContext.request.contextPath}/add-to-wishlist">
+
+    <input type="hidden"
+           name="productId"
+           value="${product.productId}">
+
+    <c:choose>
+
+    <c:when test="${inWishlist}">
+
+        <button
+        	type="submit"
+            class="wishlist-btn"
+            disabled>
+
+            ❤️ Added to Wishlist
+
+        </button>
+
+    </c:when>
+
+    <c:otherwise>
+
+        <button
+        type="submit"
+            class="wishlist-btn">
+
+            🤍 Add To Wishlist
+
+        </button>
+
+    </c:otherwise>
+
+</c:choose>
+
+</form>
 
     <div class="action-buttons">
+
+	<c:choose>
+
+    <c:when test="${product.stockQuantity > 0}">
 
         <button type="submit"
         name="action"
         value="cart"
         class="add-cart-btn">
+        
+        <i class="fa-solid fa-cart-shopping"></i>
 
-    <i class="fa-solid fa-cart-shopping"></i>
+            Add To Cart
 
-    Add To Cart
+        </button>
 
-</button>
+    </c:when>
 
-<button type="submit"
-        name="action"
-        value="buyNow"
-        class="buy-now-btn">
+    <c:otherwise>
 
-    Buy Now
+        <button class="add-cart-btn"
+                disabled>
 
-</button>
+            Out Of Stock
+
+        </button>
+
+    </c:otherwise>
+
+</c:choose>
+
 
     </div>
 

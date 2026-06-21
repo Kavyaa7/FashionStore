@@ -119,7 +119,7 @@ public class OrderItemDAOImpl implements OrderItemDAO {
                 );
 
                 item.setUnitPrice(
-                        rs.getBigDecimal("price")
+                        rs.getBigDecimal("unit_price")
                 );
 
                 item.setProductName(

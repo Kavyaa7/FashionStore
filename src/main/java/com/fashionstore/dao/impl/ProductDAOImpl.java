@@ -253,6 +253,9 @@ public class ProductDAOImpl implements ProductDAO {
         product.setImageUrl(rs.getString("image_url"));
         product.setActive(rs.getBoolean("is_active"));
         product.setPrice(rs.getBigDecimal("price"));
+        product.setStockQuantity(
+                rs.getInt("stock_quantity")
+        );
 
         Category category = new Category();
 
@@ -733,5 +736,32 @@ public class ProductDAOImpl implements ProductDAO {
 	public int countProducts() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public boolean reduceStock(int productId, int quantity) {
+
+	    String sql = """
+	            UPDATE products
+	            SET stock_quantity = stock_quantity - ?
+	            WHERE product_id = ?
+	            AND stock_quantity >= ?
+	            """;
+
+	    try (Connection conn = DBConnection.getConnection();
+	         PreparedStatement ps = conn.prepareStatement(sql)) {
+
+	        ps.setInt(1, quantity);
+	        ps.setInt(2, productId);
+	        ps.setInt(3, quantity);
+
+	        return ps.executeUpdate() > 0;
+
+	    } catch (Exception e) {
+
+	        e.printStackTrace();
+	    }
+
+	    return false;
 	}
 }

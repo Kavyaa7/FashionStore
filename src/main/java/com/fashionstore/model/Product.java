@@ -13,6 +13,7 @@ public class Product {
     private boolean isActive;
     private BigDecimal price;
     private Category category;
+    private int stockQuantity;
 
     public Product() {
     }
@@ -112,7 +113,15 @@ public class Product {
         this.category = category;
     }
 
-    @Override
+    public int getStockQuantity() {
+		return stockQuantity;
+	}
+
+	public void setStockQuantity(int stockQuantity) {
+		this.stockQuantity = stockQuantity;
+	}
+
+	@Override
     public String toString() {
         return "Product{" +
                 "productId=" + productId +
